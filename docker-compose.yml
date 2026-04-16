@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: citibike-postgres
+    command: ["postgres", "-c", "max_wal_size=4GB"]
+    environment:
+      POSTGRES_DB: citibike
+      POSTGRES_USER: citibike
+      POSTGRES_PASSWORD: citibike
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U citibike -d citibike"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+env/
+
+data/raw/*.zip
+data/extracted/**/*.csv
+data/parquet/*.parquet
+
